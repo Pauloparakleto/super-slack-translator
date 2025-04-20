@@ -5,6 +5,9 @@ PATH
       async-websocket (~> 0.8.0)
       byebug
       dotenv
+      puma
+      rackup
+      sinatra
       slack-ruby-client
 
 GEM
@@ -52,9 +55,24 @@ GEM
     logger (1.7.0)
     metrics (0.12.2)
     multipart-post (2.4.1)
+    mustermann (3.0.3)
+      ruby2_keywords (~> 0.0.1)
     net-http (0.6.0)
       uri
+    nio4r (2.7.4)
     ostruct (0.6.1)
+    puma (6.6.0)
+      nio4r (~> 2.0)
+    rack (3.1.13)
+    rack-protection (4.1.1)
+      base64 (>= 0.1.0)
+      logger (>= 1.6.0)
+      rack (>= 3.0.0, < 4)
+    rack-session (2.1.0)
+      base64 (>= 0.1.0)
+      rack (>= 3.0.0)
+    rackup (2.2.1)
+      rack (>= 3)
     rake (13.2.1)
     rspec (3.13.0)
       rspec-core (~> 3.13.0)
@@ -69,6 +87,14 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
     rspec-support (3.13.2)
+    ruby2_keywords (0.0.5)
+    sinatra (4.1.1)
+      logger (>= 1.6.0)
+      mustermann (~> 3.0)
+      rack (>= 3.0.0, < 4)
+      rack-protection (= 4.1.1)
+      rack-session (>= 2.0.0, < 3)
+      tilt (~> 2.0)
     slack-ruby-client (2.5.2)
       faraday (>= 2.0)
       faraday-mashify
@@ -76,6 +102,7 @@ GEM
       gli
       hashie
       logger
+    tilt (2.6.0)
     traces (0.15.2)
     uri (1.0.3)
     websocket-driver (0.7.7)

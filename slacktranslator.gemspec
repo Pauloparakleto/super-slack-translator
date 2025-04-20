@@ -34,9 +34,12 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   # Uncomment to register a new dependency of your gem
+  spec.add_dependency "dotenv"
+  spec.add_dependency "sinatra"
+  spec.add_dependency "puma"
+  spec.add_dependency "rackup"
   spec.add_development_dependency "rspec", "~> 3.2"
   spec.add_dependency "byebug"
-  spec.add_dependency "dotenv"
   spec.add_dependency "async-websocket", "~> 0.8.0"
   spec.add_dependency "slack-ruby-client"
   # For more information and examples about making a new gem, check out our

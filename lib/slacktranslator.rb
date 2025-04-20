@@ -1,39 +1,44 @@
 # frozen_string_literal: true
-
+require 'dotenv'
+Dotenv.load
 require 'slack-ruby-client'
 require_relative "slacktranslator/version"
+require "byebug"
+require 'sinatra/base'
+
+module App
+  # Instruction at https://api.slack.com/apps/A08P08P9J5Q/event-subscriptions?
+  class ExampleApp < Sinatra::Base
+    set :host_authorization, { permitted_hosts: [] }
+
+    before do
+      puts request.env.fetch("HTTP_HOST")
+    end
+
+    get("/") { "OK" }
+
+    post('/') do
+      data = JSON.parse request.body.read
+      puts data
+      data['challenge']
+    end
+  end
+end
 
 module Slack
   class Translator
     private attr_reader :client
 
     def initialize
-      @client = Slack::RealTime::Client.new
+      Slack.configure do |config|
+        config.token = ENV['SLACK_API_TOKEN']
+      end
+
+      @client = Slack::Web::Client.new
     end
 
-    def start!
-      client.on :hello do
-        puts "Successfully connected, welcome '#{client.self.name}' to the '#{client.team.name}' team at https://#{client.team.domain}.slack.com."
-      end
-
-      client.on :message do |data|
-        case data.text
-        when 'bot hi' then
-          client.message(channel: data.channel, text: "Hi <@#{data.user}>!")
-        when /^bot/ then
-          client.message(channel: data.channel, text: "Sorry <@#{data.user}>, what?")
-        end
-      end
-
-      client.on :close do |_data|
-        puts "Client is about to disconnect"
-      end
-
-      client.on :closed do |_data|
-        puts "Client has disconnected successfully!"
-      end
-
-      client.start!
+    def auth_test
+      client.auth_test
     end
   end
 

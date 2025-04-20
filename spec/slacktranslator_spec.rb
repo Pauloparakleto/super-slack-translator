@@ -11,9 +11,9 @@ RSpec.describe Slack::Translator do
     end
   end
 
-  describe '#start!' do
-    it 'starts websocket' do
-      expect(described_class.new.start!).to be_truthy
+  describe '#auth_test' do
+    it 'is ok' do
+      expect(described_class.new.auth_test.fetch("ok")).to eq(true)
     end
   end
 

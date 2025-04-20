@@ -35,6 +35,8 @@ Gem::Specification.new do |spec|
 
   # Uncomment to register a new dependency of your gem
   spec.add_development_dependency "rspec", "~> 3.2"
+  spec.add_dependency "byebug"
+  spec.add_dependency "dotenv"
   spec.add_dependency "async-websocket", "~> 0.8.0"
   spec.add_dependency "slack-ruby-client"
   # For more information and examples about making a new gem, check out our

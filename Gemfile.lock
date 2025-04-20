@@ -3,6 +3,8 @@ PATH
   specs:
     slacktranslator (0.1.0)
       async-websocket (~> 0.8.0)
+      byebug
+      dotenv
       slack-ruby-client
 
 GEM
@@ -20,11 +22,13 @@ GEM
       async-io
       websocket-driver (~> 0.7.0)
     base64 (0.2.0)
+    byebug (12.0.0)
     console (1.30.2)
       fiber-annotation
       fiber-local (~> 1.1)
       json
     diff-lcs (1.6.1)
+    dotenv (3.1.8)
     faraday (2.13.0)
       faraday-net_http (>= 2.0, < 3.5)
       json

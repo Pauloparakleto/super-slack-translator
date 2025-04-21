@@ -23,11 +23,11 @@ RSpec.describe Slack::Translator do
     let(:channel) { '#social' }
     let(:message) { 'Eu sou apenas um rapaz latino americano' }
 
-    it 'sends a channel message' do
+    it 'has ok true response' do
       VCR.use_cassette("send_channel_message", erb: :true, record: :once) do
         expect(described_class.new
-          .send_channel_message(message, channel, :to_english))
-          .to eq(nil)
+          .send_channel_message(message, channel, :to_english).fetch("ok"))
+          .to eq(true)
       end
     end
   end

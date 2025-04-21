@@ -1,0 +1,36 @@
+<body>
+  <h1>Hi Index</h1>
+  <div id="messages">
+    
+  </div>
+
+  <form action="/channel/message" method="post">
+    <label for="message">Digite sua mensagem: </label>
+    <input id="message" type="text" name="message" value="">
+    <button type="button" onclick="sendChannelMessage()">Enviar Mensagem</button>
+  </form>
+ <script>
+   sendChannelMessage = function() {
+     console.log('from function')
+     const messages = document.getElementById("messages");
+     const message = document.getElementById("message");
+     const xhttp = new XMLHttpRequest();
+     xhttp.open("POST", "/channel/message", true);
+     xhttp.onreadystatechange = () => {
+      if (xhttp.readyState === XMLHttpRequest.DONE) {
+        const status = xhttp.status;
+        if (status === 0 || (status >= 200 && status < 400)) {
+          console.log(xhttp.responseText);
+          let p = document.createElement("p");
+          p.append(xhttp.responseText);
+          messages.append(p);
+        } else {
+          console.log('error on receiving message');
+        }
+      }
+    };
+     xhttp.send(message.value);
+   }
+ </script>
+</body>
+

@@ -15,7 +15,17 @@ module App
       puts request.env.fetch("HTTP_HOST")
     end
 
-    get("/") { "OK" }
+    get("/") do
+      erb :index
+    end
+
+    post("/channel/message") do
+      content_type :json
+      client = Slack::Translator.new
+      message = request.body.read
+      response = client.send_channel_message(message, '#social', :to_english)
+      response.message.blocks.last.elements.last.elements.first.text.to_json
+    end
 
     post('/') do
       data = JSON.parse request.body.read
@@ -39,6 +49,10 @@ module Slack
 
     def auth_test
       client.auth_test
+    end
+
+    def send_channel_message(text, channel, symbol = :to_english)
+      client.chat_postMessage(channel:, text:, as_user: true )
     end
   end
 

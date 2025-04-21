@@ -1,0 +1,88 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://slack.com/api/chat.postMessage
+    body:
+      encoding: UTF-8
+      string: as_user=true&channel=%23social&text=Eu+sou+apenas+um+rapaz+latino+americano
+    headers:
+      User-Agent:
+      - Slack Ruby Client/2.5.2
+      Accept:
+      - application/json; charset=utf-8
+      Authorization:
+      - Bearer <%= ENV['SLACK_API_TOKEN'] %>
+    Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Mon, 21 Apr 2025 04:01:28 GMT
+      server:
+      - Apache
+      vary:
+      - Accept-Encoding
+      x-slack-req-id:
+      - 7032f9b9632b65b25cf78a2a4fc2c96d
+      x-content-type-options:
+      - nosniff
+      x-xss-protection:
+      - '0'
+      pragma:
+      - no-cache
+      cache-control:
+      - private, no-cache, no-store, must-revalidate
+      expires:
+      - Sat, 26 Jul 1997 05:00:00 GMT
+      content-type:
+      - application/json; charset=utf-8
+      x-accepted-oauth-scopes:
+      - chat:write
+      x-oauth-scopes:
+      - app_mentions:read,channels:history,channels:join,channels:manage,channels:read,chat:write.customize,chat:write.public,chat:write,files:read,files:write,groups:history,groups:read,groups:write,im:history,im:read,im:write,links:read,links:write,mpim:history,mpim:read,mpim:write,pins:read,pins:write,reactions:read,reactions:write,reminders:read,reminders:write,team:read,usergroups:read,usergroups:write,users:read,users:write,users.profile:read
+      access-control-expose-headers:
+      - x-slack-req-id, retry-after
+      access-control-allow-headers:
+      - slack-route, x-slack-version-ts, x-b3-traceid, x-b3-spanid, x-b3-parentspanid,
+        x-b3-sampled, x-b3-flags
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      referrer-policy:
+      - no-referrer
+      x-slack-unique-id:
+      - aAXDGOeL2x1oh2ALAyq9eAAAADQ
+      x-slack-backend:
+      - r
+      access-control-allow-origin:
+      - "*"
+      via:
+      - 1.1 slack-prod.tinyspeck.com, envoy-www-iad-qkjwlijh,envoy-edge-gru-nfgpsrwn
+      content-encoding:
+      - gzip
+      content-length:
+      - '399'
+      x-envoy-attempt-count:
+      - '1'
+      x-envoy-upstream-service-time:
+      - '298'
+      x-backend:
+      - main_normal main_canary_with_overflow main_control_with_overflow
+      x-server:
+      - slack-www-hhvm-main-iad-rotd
+      x-slack-shared-secret-outcome:
+      - no-match
+      x-edge-backend:
+      - envoy-www
+      x-slack-edge-shared-secret-outcome:
+      - no-match
+    body:
+      encoding: UTF-8
+      string: '{"ok":true,"channel":"SECRET","ts":"1745208088.501419","message":{"user":"SECRET","type":"message","ts":"1745208088.501419","bot_id":"SECRET","app_id":"SECRET","text":"Eu
+        sou apenas um rapaz latino americano","team":"T08NMJRSCMU","bot_profile":{"id":"B08P7HS4S8Z","app_id":"SECRET","user_id":"SECRET","name":"my-powerful-app","icons":{"image_36":"https:\/\/a.slack-edge.com\/80588\/img\/plugins\/app\/bot_36.png","image_48":"https:\/\/a.slack-edge.com\/80588\/img\/plugins\/app\/bot_48.png","image_72":"https:\/\/a.slack-edge.com\/80588\/img\/plugins\/app\/service_72.png"},"deleted":false,"updated":1745118439,"team_id":"SECRET"},"blocks":[{"type":"rich_text","block_id":"C1d64","elements":[{"type":"rich_text_section","elements":[{"type":"text","text":"Eu
+        sou apenas um rapaz latino americano"}]}]}]}}'
+  recorded_at: Mon, 21 Apr 2025 04:01:28 GMT
+recorded_with: VCR 6.3.1

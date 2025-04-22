@@ -5,6 +5,8 @@ require 'slack-ruby-client'
 require_relative "slacktranslator/version"
 require "byebug"
 require 'sinatra/base'
+require "faraday"
+require "json"
 
 module App
   # Instruction at https://api.slack.com/apps/A08P08P9J5Q/event-subscriptions?
@@ -53,6 +55,26 @@ module Slack
 
     def send_channel_message(text, channel, symbol = :to_english)
       client.chat_postMessage(channel:, text:, as_user: true )
+    end
+
+    def translate_message(text)
+      conn = Faraday.new(
+        url: 'https://api.openai.com/v1/chat/completions',
+        headers: {
+          'Content-Type' => 'application/json',
+          'Authorization' => "Bearer #{ENV['OPENAI_API_KEY']}"
+        }
+      )
+
+      response = conn.post do |req|
+        req.body = {
+          model: "gpt-3.5-turbo",
+          messages: [
+            { role: "system", content: "You are a helpful assistant." },
+            { role: "user", content: "Translate the following to English: #{text}" }
+          ]
+        }.to_json
+      end
     end
   end
 

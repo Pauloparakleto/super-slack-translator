@@ -34,7 +34,9 @@ RSpec.describe Slack::Translator do
 
   describe '#translate_message' do
     it 'translate message' do
-      expect(described_class.new.translate_message('Olá Mundo')).to eq('Hello World')
+      VCR.use_cassette("gpt_translate_message", erb: true) do
+        expect(described_class.new.translate_message('Olá Mundo!')).to eq('Hello World!')
+      end
     end
   end
 

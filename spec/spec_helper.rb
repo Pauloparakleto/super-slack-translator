@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+require "vcr"
 require "slacktranslator"
 require "byebug"
 VCR.configure do |config|

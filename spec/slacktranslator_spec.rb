@@ -13,7 +13,22 @@ RSpec.describe Slack::Translator do
 
   describe '#auth_test' do
     it 'is ok' do
-      expect(described_class.new.auth_test.fetch("ok")).to eq(true)
+      VCR.use_cassette("auth_test", erb: :true, record: :once) do
+        expect(described_class.new.auth_test.fetch("ok")).to eq(true)
+      end
+    end
+  end
+
+  describe '#send_channel_message' do
+    let(:channel) { '#social' }
+    let(:message) { 'Eu sou apenas um rapaz latino americano' }
+
+    it 'has ok true response' do
+      VCR.use_cassette("send_channel_message", erb: :true, record: :once) do
+        expect(described_class.new
+          .send_channel_message(message, channel, :to_english).fetch("ok"))
+          .to eq(true)
+      end
     end
   end
 

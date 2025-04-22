@@ -1,0 +1,83 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://slack.com/api/auth.test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Slack Ruby Client/2.5.2
+      Accept:
+      - application/json; charset=utf-8
+      Authorization:
+      - Bearer <%= ENV['SLACK_API_TOKEN'] %>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Mon, 21 Apr 2025 03:32:12 GMT
+      server:
+      - Apache
+      vary:
+      - Accept-Encoding
+      x-slack-req-id:
+      - ad9b957655c7110647c15f2a1bb2e1d6
+      x-content-type-options:
+      - nosniff
+      x-xss-protection:
+      - '0'
+      pragma:
+      - no-cache
+      cache-control:
+      - private, no-cache, no-store, must-revalidate
+      expires:
+      - Sat, 26 Jul 1997 05:00:00 GMT
+      content-type:
+      - application/json; charset=utf-8
+      x-oauth-scopes:
+      - app_mentions:read,channels:history,channels:join,channels:manage,channels:read,chat:write.customize,chat:write.public,chat:write,files:read,files:write,groups:history,groups:read,groups:write,im:history,im:read,im:write,links:read,links:write,mpim:history,mpim:read,mpim:write,pins:read,pins:write,reactions:read,reactions:write,reminders:read,reminders:write,team:read,usergroups:read,usergroups:write,users:read,users:write,users.profile:read
+      access-control-expose-headers:
+      - x-slack-req-id, retry-after
+      access-control-allow-headers:
+      - slack-route, x-slack-version-ts, x-b3-traceid, x-b3-spanid, x-b3-parentspanid,
+        x-b3-sampled, x-b3-flags
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      referrer-policy:
+      - no-referrer
+      x-slack-unique-id:
+      - aAW8PNC0Kt0WBfyuxH_PfQAAAC4
+      x-slack-backend:
+      - r
+      access-control-allow-origin:
+      - "*"
+      via:
+      - 1.1 slack-prod.tinyspeck.com, envoy-www-iad-efpujeij,envoy-edge-gru-btuqvwiw
+      content-encoding:
+      - gzip
+      content-length:
+      - '188'
+      x-envoy-attempt-count:
+      - '1'
+      x-envoy-upstream-service-time:
+      - '248'
+      x-backend:
+      - main_normal main_canary_with_overflow main_control_with_overflow
+      x-server:
+      - slack-www-hhvm-main-iad-aauj
+      x-slack-shared-secret-outcome:
+      - no-match
+      x-edge-backend:
+      - envoy-www
+      x-slack-edge-shared-secret-outcome:
+      - no-match
+    body:
+      encoding: UTF-8
+      string: '{"ok":true,"url":"https:\/\/actionnetwork-cgq5750.slack.com\/","team":"Action
+        Network Enterview","user":"powerful_app","team_id":"SECRET","user_id":"SECRET","bot_id":"SECRET","is_enterprise_install":false}'
+  recorded_at: Mon, 21 Apr 2025 03:32:12 GMT
+recorded_with: VCR 6.3.1

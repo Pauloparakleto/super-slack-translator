@@ -1,0 +1,112 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.openai.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"model":"gpt-4o-mini","store":true,"messages":[{"role":"user","content":"Translate
+        the following to English: Olá Mundo!. Only include in the message response
+        the translated text."}]}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <%= ENV['OPENAI_API_KEY'] %>
+      User-Agent:
+      - Faraday v2.13.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Tue, 22 Apr 2025 13:08:25 GMT
+      content-type:
+      - application/json
+      transfer-encoding:
+      - chunked
+      connection:
+      - keep-alive
+      access-control-expose-headers:
+      - X-Request-ID
+      openai-organization:
+      - rebasecode
+      openai-processing-ms:
+      - '214'
+      openai-version:
+      - '2020-10-01'
+      x-ratelimit-limit-requests:
+      - '200'
+      x-ratelimit-limit-tokens:
+      - '100000'
+      x-ratelimit-remaining-requests:
+      - '194'
+      x-ratelimit-remaining-tokens:
+      - '99790'
+      x-ratelimit-reset-requests:
+      - 42m25.679s
+      x-ratelimit-reset-tokens:
+      - 1h30m40.079s
+      x-request-id:
+      - req_9154b2510a0277043ff8d0eb58139a4f
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      cf-cache-status:
+      - DYNAMIC
+      set-cookie:
+      - __cf_bm=U.qm8fmHkaQ0QhKTr0WJ3HAHJYHTxjgMv6xfg7E3As4-1745327305-1.0.1.1-SAxgfVHe46PgOSHOh_uV0s8H_E_dtbY6NIX3D3POkeOQL_RXKFuJGXKStFYFGwEEhSFjTkrVD_spOozQBcgmUBu2GRpPKs6njfpoZr_CbT0;
+        path=/; expires=Tue, 22-Apr-25 13:38:25 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None, _cfuvid=4Hii9Zfaz3DBUBYJGnTGsb_7TZrPzpp1Ccl93o89jDU-1745327305420-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      x-content-type-options:
+      - nosniff
+      server:
+      - cloudflare
+      cf-ray:
+      - 934559888b6636ec-GRU
+      content-encoding:
+      - gzip
+      alt-svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "id": "SECRET",
+          "object": "chat.completion",
+          "created": 1745327305,
+          "model": "gpt-4o-mini-2024-07-18",
+          "choices": [
+            {
+              "index": 0,
+              "message": {
+                "role": "assistant",
+                "content": "Hello World!",
+                "refusal": null,
+                "annotations": []
+              },
+              "logprobs": null,
+              "finish_reason": "stop"
+            }
+          ],
+          "usage": {
+            "prompt_tokens": 27,
+            "completion_tokens": 4,
+            "total_tokens": 31,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          },
+          "service_tier": "default",
+          "system_fingerprint": "fp_0392822090"
+        }
+  recorded_at: Tue, 22 Apr 2025 13:08:25 GMT
+recorded_with: VCR 6.3.1

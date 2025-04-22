@@ -1,12 +1,13 @@
 <body>
-  <h1>Hi Index</h1>
-  <div id="messages">
-    
-  </div>
+  <h1>Translator para o Slack</h1>
+  <div id="messages"></div>
 
   <form action="/channel/message" method="post">
-    <label for="message">Digite sua mensagem: </label>
-    <input id="message" type="text" name="message" value="">
+    <p>
+      <label for="message">Digite sua mensagem: </label>
+    </p>
+    <textarea id="message" name="message" value="" rows="3" cols="70"></textarea>
+    <br>
     <button type="button" onclick="sendChannelMessage()">Enviar Mensagem</button>
   </form>
  <script>

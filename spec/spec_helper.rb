@@ -1,8 +1,9 @@
 # frozen_string_literal: true
-
+require "vcr"
 require "slacktranslator"
 require "byebug"
 VCR.configure do |config|
+  config.allow_http_connections_when_no_cassette = true
   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
   config.hook_into :faraday
   config.debug_logger = File.open('development.log', 'w')

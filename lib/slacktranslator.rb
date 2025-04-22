@@ -11,6 +11,7 @@ require "json"
 module App
   # Instruction at https://api.slack.com/apps/A08P08P9J5Q/event-subscriptions?
   class SlackTranslator < Sinatra::Base
+    LAST_RESPONSE = { changed: false }
     set :host_authorization, { permitted_hosts: [] }
 
     before do
@@ -29,6 +30,15 @@ module App
       response.message.blocks.last.elements.last.elements.first.text.to_json
     end
 
+    get '/latest_response' do
+      content_type :json
+      if LAST_RESPONSE[:changed]
+        return LAST_RESPONSE.to_json
+      end
+
+      LAST_RESPONSE[:data] = nil.to_json
+    end
+
     post('/') do
       content_type :json
       client = Slack::Translator.new
@@ -36,9 +46,10 @@ module App
       data = JSON.parse request.body.read
       text = data.fetch('event').fetch('text')
       message = client.translate_message(text)
-      puts data
       puts message
-      message.to_json
+      LAST_RESPONSE[:data] = message.to_json
+      LAST_RESPONSE[:changed] = true
+      status 200
     end
   end
 end

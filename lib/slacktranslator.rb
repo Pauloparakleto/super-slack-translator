@@ -32,11 +32,10 @@ module App
 
     get '/latest_response' do
       content_type :json
-      if LAST_RESPONSE[:changed]
-        return LAST_RESPONSE.to_json
-      end
-
-      LAST_RESPONSE[:data] = nil.to_json
+      changed = LAST_RESPONSE[:changed]
+      data = LAST_RESPONSE[:data]
+      LAST_RESPONSE[:changed] = false if LAST_RESPONSE[:changed].eql?(true)
+      {data: data, changed: changed}.to_json
     end
 
     post('/') do
@@ -49,6 +48,7 @@ module App
       puts message
       LAST_RESPONSE[:data] = message.to_json
       LAST_RESPONSE[:changed] = true
+      puts "from post slack bot last response: #{LAST_RESPONSE}"
       status 200
     end
   end

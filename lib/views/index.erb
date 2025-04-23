@@ -37,9 +37,8 @@
     fetch('/latest_response')
       .then(response => response.json())
        .then(data => {
-         debugger
          const output = document.getElementById("messages");
-         if (data !== null) {
+         if (data.changed) {
           let p = document.createElement("p");
            p.append(data.data);
            const messages = document.getElementById("messages");
@@ -47,8 +46,9 @@
          }
       })
       .catch(error => console.error("Error fetching latest response:", error));
-  }
-   setInterval(fetchLatestResponse, 10000)
+   }
+
+  setInterval(fetchLatestResponse, 10000)
   fetchLatestResponse();
  </script>
 </body>

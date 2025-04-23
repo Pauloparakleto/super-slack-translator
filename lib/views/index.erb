@@ -32,6 +32,24 @@
     };
      xhttp.send(message.value);
    }
+
+   function fetchLatestResponse() {
+    fetch('/latest_response')
+      .then(response => response.json())
+       .then(data => {
+         const output = document.getElementById("messages");
+         if (data.changed) {
+          let p = document.createElement("p");
+           p.append(data.data);
+           const messages = document.getElementById("messages");
+           messages.append(p);
+         }
+      })
+      .catch(error => console.error("Error fetching latest response:", error));
+   }
+
+  setInterval(fetchLatestResponse, 1000)
+  fetchLatestResponse();
  </script>
 </body>
 

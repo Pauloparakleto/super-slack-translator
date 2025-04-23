@@ -1,43 +1,34 @@
 # Slacktranslator
 
-TODO: Delete this and the text below, and describe your gem
+A sinatra based application.
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/slacktranslator`. To experiment with that code, run `bin/console` for an interactive prompt.
+Translate to English sending message and translate to Portuguese incoming messages.
 
 ## Installation
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
+After download this code, cd into it.
 
-Install the gem and add to the application's Gemfile by executing:
+`bundle install`
 
-```bash
-bundle add UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
-```
+`cp .env.sample .env`
 
-If bundler is not being used to manage dependencies, install the gem by executing:
+Add your own slack api and openai keys.
 
-```bash
-gem install UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
-```
+You must chat in the "#social" slack channel. Your bot must be a "#social" member.
+
+Add your ngrok url to the slack hook. Also make sure to add this same url to the ngrok url in the .env file.
+
+> [!IMPORTANT]
+> This was designed initially to run in development mode.
+
+`bin/console`
+
+`App::Slacktranslator.run!`
 
 ## Usage
 
-TODO: Write usage instructions here
+Open your browser in `localhos:4567` the sinatra default.
 
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/slacktranslator. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/slacktranslator/blob/master/CODE_OF_CONDUCT.md).
-
-## License
-
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-
-## Code of Conduct
-
-Everyone interacting in the Slacktranslator project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/slacktranslator/blob/master/CODE_OF_CONDUCT.md).

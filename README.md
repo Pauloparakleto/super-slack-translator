@@ -12,7 +12,14 @@ After download this code, cd into it.
 
 `cp .env.sample .env`
 
-add your own slack api and openai keys
+Add your own slack api and openai keys.
+
+You must chat in the "#social" slack channel. Your bot must be a "#social" member.
+
+Add your ngrok url to the slack hook. Also make sure to add this same url to the ngrok url in the .env file.
+
+> [!IMPORTANT]
+> This was designed initially to run in development mode.
 
 `bin/console`
 

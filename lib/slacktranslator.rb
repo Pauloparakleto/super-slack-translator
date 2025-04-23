@@ -26,7 +26,7 @@ module App
       content_type :json
       client = Slack::Translator.new
       message = request.body.read
-      response = client.send_channel_message(message, '#social', :to_english)
+      response = client.send_channel_message(message, '#social', 'en')
       response.message.blocks.last.elements.last.elements.first.text.to_json
     end
 
@@ -43,6 +43,8 @@ module App
       client = Slack::Translator.new
       puts "event sent"
       data = JSON.parse request.body.read
+      puts data
+      return if data.fetch('event').fetch('bot_id', false)
       text = data.fetch('event').fetch('text')
       message = client.translate_message(text)
       puts message
@@ -70,8 +72,8 @@ module Slack
       client.auth_test
     end
 
-    def send_channel_message(text, channel, symbol = :to_english)
-      translated_text = translate_message(text)
+    def send_channel_message(text, channel, language = 'en')
+      translated_text = translate_message(text, language)
 
       client.chat_postMessage(channel:, text: translated_text, as_user: true )
     end
@@ -100,6 +102,8 @@ module Slack
 
         JSON.parse(response.body).fetch('choices').first.fetch('message').fetch('content')
       rescue StandardError => exception
+        puts "exception on translating message"
+        puts exception
         text
       end
     end
